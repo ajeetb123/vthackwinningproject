@@ -1,0 +1,12 @@
+# Optional local ML: the quota-free TripoSR mesh provider (app/generation/triposr_local.py) and
+# door detection for entrances (app/generation/entrances.py, OWLv2 ~600 MB on first use).
+# Also needs: git clone --depth 1 https://github.com/VAST-AI-Research/TripoSR .cache/vendor/TripoSR
+# Weights download on first use into backend/.cache/hf. Without this, the mesh chain skips
+# "triposr-local", and entrances fall back to one default front-center door per building.
+-r requirements.txt
+torch==2.14.0
+omegaconf==2.3.1
+einops==0.8.2
+transformers==4.57.6  # TripoSR's checkpoint uses 4.x ViT key names; 5.x renamed them
+PyMCubes==0.1.6       # stands in for torchmcubes, which no longer builds
+fast-simplification==0.2.0
